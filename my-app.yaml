@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-app
+spec:
+  destination:
+    namespace: my-app-namespace
+    server: 'https://kubernetes.default.svc'
+  source:
+    repoURL: 'https://github.com/your-username/my-app-repo'
+    targetRevision: HEAD
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
